@@ -1,9 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package quadtree;
+
+import java.util.List;
 
 /**
  *
@@ -11,11 +8,12 @@ package quadtree;
  */
 public class Quadtree {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
+    private Quadtree _nw;
+    private Quadtree _ne;
+    private Quadtree _se;
+    private Quadtree _sw;
+    
+    private List<Point> _points;
+    
     
 }
