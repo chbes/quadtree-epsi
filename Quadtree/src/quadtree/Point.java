@@ -38,4 +38,15 @@ public class Point {
         return " ("+_x+";"+_y+") ";
     }
     
+    public boolean isEquals(Point p) {
+        
+        if(this._x == p._x && this._y == p._y) {
+            
+            return true;
+        } else {
+            
+            return false;
+        }
+    }
+    
 }

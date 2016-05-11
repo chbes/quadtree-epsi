@@ -47,7 +47,7 @@ public class Quadtree {
         
         _points = new ArrayList();
         
-        System.out.println("New QuadTree ->"+_x0+"-"+_x1+"|"+_y0+"-"+_y1);
+        //System.out.println("New QuadTree ->"+_x0+"-"+_x1+"|"+_y0+"-"+_y1);
     }
     
     public void addPoints(List<Point> newPoints) {
@@ -68,15 +68,15 @@ public class Quadtree {
     
     public void ventilation() {
         
-        System.out.println("Ventilation ->"+_x0+"-"+_x1+"|"+_y0+"-"+_y1);
-        System.out.println("  -> "+_points.size());
+        //System.out.print("Ventilation ->"+_x0+"-"+_x1+"|"+_y0+"-"+_y1);
+        //System.out.println("  -> "+_points.size()+" | "+_points);
         
         if(_points.size() > NB_POINT_MAX) {
         
-            _nw = new Quadtree(_x0,_x1/2,_y0,_y1/2);
-            _ne = new Quadtree(_x1/2,_x1,_y0,_y1/2);
-            _se = new Quadtree(_x1/2,_x1,_y1/2,_y1);
-            _sw = new Quadtree(_x0,_x1/2,_y1/2,_y1);
+            _nw = new Quadtree(_x0,(_x0+_x1)/2,_y0,(_y0+_y1)/2);
+            _ne = new Quadtree((_x0+_x1)/2,_x1,_y0,(_y0+_y1)/2);
+            _se = new Quadtree((_x0+_x1)/2,_x1,(_y0+_y1)/2,_y1);
+            _sw = new Quadtree(_x0,(_x0+_x1)/2,(_y0+_y1)/2,_y1);
 
             for(Point p : _points) {
                 moveInQuadTreeChild(p);            
@@ -97,10 +97,10 @@ public class Quadtree {
         //0->NW | 1->NE | 10->SW | 11->SE
         int codeLocalisation = 0;
         
-        if(p.getX() > _x1/2) {
+        if(p.getX() > (_x0+_x1)/2) {
             codeLocalisation += 1;
         }
-        if(p.getY() > _y1/2) {
+        if(p.getY() > (_y0+_y1)/2) {
             codeLocalisation += 10;
         }
         
@@ -215,6 +215,10 @@ public class Quadtree {
             
             return _points;
         }
+    }
+    
+    public int getSize() {
+        return _x1;
     }
     
     

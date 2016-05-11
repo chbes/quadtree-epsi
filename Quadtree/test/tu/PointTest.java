@@ -41,4 +41,13 @@ public class PointTest {
         assertEquals(manyPoints.size(), 50);
     }
     
+    @Test
+    public void souldIsEquelsPoints() {
+        
+        Point p1 = PointFactory.newPoint(12, 34);
+        Point p2 = PointFactory.newPoint(12, 34);
+        
+        assertTrue(p1.isEquals(p2));
+    }
+    
 }

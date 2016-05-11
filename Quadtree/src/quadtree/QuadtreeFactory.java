@@ -19,4 +19,10 @@ public class QuadtreeFactory {
         return newQuadtree;
     }
     
+    public static Quadtree newRandomQuadtree(int size, int nbPoints) {
+        Quadtree newQuadtree = new Quadtree(0, size, 0, size);
+        newQuadtree.addPoints(PointFactory.newRandomPoints(size, nbPoints));
+        return newQuadtree;
+    }
+    
 }
