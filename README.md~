@@ -37,14 +37,11 @@ On doit pouvoir interroger le quadtree de 2 façons :
 - d'autre part, pour connaître les points les plus proches d'un point donné, toujours grâce aux coordonnées X,Y de ce dernier. Les points les plus proches sont évidemment ceux appartenant au même noeud. Pour un point n'ayant pas été ventilé, car se trouvant à cheval sur plusieurs noeuds fils, les points les plus proches sont l'ensemble des points se trouvant dans les noeuds descendants (quelque soit leur profondeur).
 
 ## Livraison
-Le script que vous allez livrer devra demander à l'utilisateur une action (profondeur ou points les plus proches), ainsi que des coordonnées X,Y. La documentation succincte associée devra indiquer comment lancer le script, quelles options passer (si nécessaire), et comment interagir avec le script. Les résultats seront eux aussi affichés dans la console.
+Un éxecutable au format .jar
+Code source du projet
+Code source des tests
 
-Liste des livrables :
-- Le code avec les tests
-- Le script et son manuel d'utilisation (succinct)
-- Le contexte d'exécution de votre code (OS, Runtime, Versions, etc.)
-
-De préférence, forkez ce repository, et utilisez le fork pour commiter votre code. Commitez à chaque cycle TDD (après le refactor, et avant le prochain red). Faites une pull request une fois que vous avez terminé. 
+Context de réalisation -> Ubuntu 14.04 LTS | java version "1.8.0_91" Java(TM) SE Runtime Environment (build 1.8.0_91-b14) Java HotSpot(TM) 64-Bit Server VM (build 25.91-b14, mixed mode) 
 
 ## Notation
 Vous serez notés sur votre compréhension de la démarche TDD, et sur les principes de Clean Code. La performance du système n'entrera pas en ligne de compte, sauf s'il répond de manière anormalement lente (plus d'une trentaine de secondes... c'est large...).
