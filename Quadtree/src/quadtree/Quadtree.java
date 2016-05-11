@@ -54,25 +54,22 @@ public class Quadtree {
         _points.addAll(newPoints);
     }
     
-    public void removePoints(List<Point> oldPoints) {
-        _points.removeAll(oldPoints);
-    }
-    
     public void addPoint(Point newPoint) {
         _points.add(newPoint);
     }
     
-    public void removePoint(Point oldPoint) {
-        _points.remove(oldPoint);
-    }
-    
+     public void removePoints() {
+        _points.clear();
+    }  
+     
     public List<Point> getPoints() {
         return _points;
     }
     
     public void ventilation() {
         
-        System.out.println("Ventilation");
+        System.out.println("Ventilation ->"+_x0+"-"+_x1+"|"+_y0+"-"+_y1);
+        System.out.println("  -> "+_points.size());
         
         if(_points.size() > NB_POINT_MAX) {
         
@@ -84,11 +81,18 @@ public class Quadtree {
             for(Point p : _points) {
                 moveInQuadTreeChild(p);            
             }
-            this.removePoints(_points);
+            
+            this.removePoints();
+            
+            _nw.ventilation();
+            _ne.ventilation();
+            _se.ventilation();
+            _sw.ventilation();
+            
         }
     }
     
-    private int getLocation(Point p) {
+    public int getLocation(Point p) {
         
         //0->NW | 1->NE | 10->SW | 11->SE
         int codeLocalisation = 0;
@@ -103,14 +107,14 @@ public class Quadtree {
         return codeLocalisation;
     }
     
-    private void moveInQuadTreeChild(Point p) {
+    public void moveInQuadTreeChild(Point p) {
         
         switch( getLocation(p) ) {
             case 0:
-                _ne.addPoint(p);
+                _nw.addPoint(p);
                 break;
             case 1:
-                _nw.addPoint(p);
+                _ne.addPoint(p);
                 break;
             case 10:
                 _sw.addPoint(p);
@@ -137,20 +141,79 @@ public class Quadtree {
         }
     }
     
-    public int getDepth() {
+    public int getDepthQuadtree() {
         
         if(_ne != null && _nw != null && _se != null && _sw != null) {
             
-            int depth = _ne.getDepth();
-            depth = Math.max(depth,_nw.getDepth());
-            depth = Math.max(depth,_se.getDepth());
-            depth = Math.max(depth,_sw.getDepth());
+            int depth = _ne.getDepthQuadtree();
+            depth = Math.max(depth,_nw.getDepthQuadtree());
+            depth = Math.max(depth,_se.getDepthQuadtree());
+            depth = Math.max(depth,_sw.getDepthQuadtree());
             
             return depth + 1;
             
         } else {
             
             return 1;
+        }
+    }
+    
+    public int getDepthOfPoint(Point pointWanted) {
+        
+        //Point pointWanted = new Point(x,y);
+        
+        if(_ne != null && _nw != null && _se != null && _sw != null) {
+            
+            int depth = -1;
+            
+            switch( getLocation(pointWanted) ) {
+                case 0:
+                    depth = _nw.getDepthOfPoint(pointWanted);
+                    break;
+                case 1:
+                    depth = _ne.getDepthOfPoint(pointWanted);
+                    break;
+                case 10:
+                    depth = _sw.getDepthOfPoint(pointWanted);
+                    break;
+                case 11:
+                    depth = _se.getDepthOfPoint(pointWanted);
+                    break;
+                default:
+                    break;
+            }
+            
+            return depth + 1;
+            
+        } else {
+            
+            return 1;
+        }
+    }
+    
+    public List<Point> getNeighbours(Point pointWanted) {
+        
+        //Point pointWanted = new Point(x,y);
+        
+        if(_ne != null && _nw != null && _se != null && _sw != null) {
+
+            
+            switch( getLocation(pointWanted) ) {
+                case 0:
+                    return _nw.getNeighbours(pointWanted);
+                case 1:
+                    return _ne.getNeighbours(pointWanted);
+                case 10:
+                    return _sw.getNeighbours(pointWanted);
+                case 11:
+                    return _se.getNeighbours(pointWanted);
+                default:
+                    return null;
+            }
+
+        } else {
+            
+            return _points;
         }
     }
     

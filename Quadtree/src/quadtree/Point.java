@@ -31,6 +31,11 @@ public class Point {
 
     public void setY(int _y) {
         this._y = _y;
-    } 
+    }
+    
+    @Override
+    public String toString() {
+        return " ("+_x+";"+_y+") ";
+    }
     
 }
