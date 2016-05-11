@@ -37,7 +37,7 @@ On doit pouvoir interroger le quadtree de 2 façons :
 - d'autre part, pour connaître les points les plus proches d'un point donné, toujours grâce aux coordonnées X,Y de ce dernier. Les points les plus proches sont évidemment ceux appartenant au même noeud. Pour un point n'ayant pas été ventilé, car se trouvant à cheval sur plusieurs noeuds fils, les points les plus proches sont l'ensemble des points se trouvant dans les noeuds descendants (quelque soit leur profondeur).
 
 ## Livraison
-- Un éxecutable au format .jar
+- Un exécutable au format .jar
 - Code source du projet
 - Code source des tests
 
