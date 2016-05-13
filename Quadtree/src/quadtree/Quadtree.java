@@ -46,8 +46,6 @@ public class Quadtree {
         _y1 = y1;
         
         _points = new ArrayList();
-        
-        //System.out.println("New QuadTree ->"+_x0+"-"+_x1+"|"+_y0+"-"+_y1);
     }
     
     public void addPoints(List<Point> newPoints) {
@@ -67,9 +65,6 @@ public class Quadtree {
     }
     
     public void ventilation() {
-        
-        //System.out.print("Ventilation ->"+_x0+"-"+_x1+"|"+_y0+"-"+_y1);
-        //System.out.println("  -> "+_points.size()+" | "+_points);
         
         if(_points.size() > NB_POINT_MAX) {
         
@@ -127,20 +122,6 @@ public class Quadtree {
         }
     }
     
-    public void showState() {
-        System.out.println("QuadTree ->"+_x0+"-"+_x1+"|"+_y0+"-"+_y1);
-        if(_ne != null && _nw != null && _se != null && _sw != null) {
-            
-             _ne.showState();
-             _nw.showState();
-             _se.showState();
-             _sw.showState();
-             
-        } else {
-            System.out.println("         ->"+_points.size());
-        }
-    }
-    
     public int getDepthQuadtree() {
         
         if(_ne != null && _nw != null && _se != null && _sw != null) {
@@ -159,8 +140,6 @@ public class Quadtree {
     }
     
     public int getDepthOfPoint(Point pointWanted) {
-        
-        //Point pointWanted = new Point(x,y);
         
         if(_ne != null && _nw != null && _se != null && _sw != null) {
             
@@ -192,8 +171,6 @@ public class Quadtree {
     }
     
     public List<Point> getNeighbours(Point pointWanted) {
-        
-        //Point pointWanted = new Point(x,y);
         
         if(_ne != null && _nw != null && _se != null && _sw != null) {
 

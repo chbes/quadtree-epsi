@@ -9,11 +9,8 @@ import quadtree.QuadtreeFactory;
  *
  * @author cbes
  */
-public class NewMain {
+public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         
         String in;
